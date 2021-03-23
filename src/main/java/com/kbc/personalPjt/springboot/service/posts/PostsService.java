@@ -38,6 +38,14 @@ public class PostsService {
         return new PostsResponseDto(entity);
     }
 
+    @Transactional
+    public void delete (Long id) {
+        Posts posts = postsRepository.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException("해당 글이 없습니다. id=" + id));
+
+        postsRepository.delete(posts);
+    }
+
     @Transactional(readOnly = true)// select만 유지하여 조회속도 개선
     public List<PostsListResponseDto> findAllDesc(){
         return postsRepository.findAllDesc().stream()
