@@ -17,7 +17,7 @@ script: ".gradlew clean build"
 notifications:
   email:
     recipients:
-      - bckang92@likelion.org
+      - bckang92@naver.com
 
 before_install:
   - chmod +x gradlew
