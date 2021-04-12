@@ -22,7 +22,6 @@ deploy:
   - provider: s3
     access_key_id: $AWS_ACCESS_KEY #Travis에 입력한 s3 키값
     secret_access_key: $AWS_SECRET_KEY #Travis에 입력한 s3 키값
-
     bucket: freelec-spring-build-kbc #s3버킷명
     region: ap-northeast-2
     skip_cleanup: true
@@ -30,11 +29,11 @@ deploy:
     local_dir: deploy #before-deploy 에서 생성한 폴더
     wait-until-deployed: true
 
+before_install:
+  -chmod +x gradlew
+
 # CI 실행완료시 메일로 알람전송
 notifications:
   email:
     recipients:
       - bckang92@naver.com
-
-before_install:
-  - chmod +x gradlew
