@@ -46,7 +46,7 @@ public class PostsService {
         postsRepository.delete(posts);
     }
 
-    @Transactional(readOnly = true)// select만 유지하여 조회속도 개선
+    @Transactional(readOnly = true)// select만 유지하여 조회속도 개선처리
     public List<PostsListResponseDto> findAllDesc(){
         return postsRepository.findAllDesc().stream()
                 .map(PostsListResponseDto::new) // == posts -> new PostsListResponseDto(posts)
